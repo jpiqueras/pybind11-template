@@ -1,0 +1,22 @@
+[requires]
+my_lib/1.0.1
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout
+
+[options]
+my_lib*:LIB_OPTION_LIBRARY = True
+my_lib*:LIB_OPTION_LTO = True
+my_lib*:LIB_OPTION_DOCS = False
+my_lib*:LIB_OPTION_WARNINGS = False
+my_lib*:LIB_OPTION_WARNINGS_AS_ERRORS = False
+my_lib*:LIB_OPTION_COVERAGE = False
+my_lib*:LIB_OPTION_INCLUDE_WHAT_YOU_USE = False
+my_lib*:LIB_OPTION_CLANG_TIDY = False
+my_lib*:LIB_OPTION_CPPCHECK = False
+my_lib*:LIB_OPTION_SANITIZE_ADDR = False
+my_lib*:LIB_OPTION_SANITIZE_UNDEF = False
