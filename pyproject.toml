@@ -1,7 +1,11 @@
 [build-system]
-requires = ["scikit-build-core>=0.3.3", "pybind11", "cmake"]
-build-backend = "scikit_build_core.build"
-
+requires = ["scikit-build-core>=0.3.3", "pybind11", "cmake", "conan>=2.0"]
+# For a "regular" build with scikit-build-core, you would just use:
+# build-backend = "scikit_build_core.build"
+build-backend = "prepare-build-backend" # Custom wrapper around scikit_build_core.build See comments in prepare-build-backend.py.
+backend-path = [
+    ".",
+] #For in-tree builds, we need to add the directory to the path. See: https://peps.python.org/pep-0517/#in-tree-build-backends
 
 [project]
 name = "pybind11_template"
