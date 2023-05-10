@@ -17,6 +17,17 @@ from scikit_build_core.build import *
 import subprocess
 
 
+result = subprocess.run(
+    ["conan", "create", "src/my_lib/modern-cpp-lib-template", "--build=missing"],
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
+)
+if result.returncode == 0:
+    print("Success!")
+else:
+    print("Error:", result.stderr.decode())
+    raise RuntimeError("Conan install failed. See error above.")
+
 # "Inject" the conan install before the build hooks are called.
 result = subprocess.run(
     ["conan", "install", "src/my_lib", "--build=missing"],
