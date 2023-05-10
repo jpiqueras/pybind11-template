@@ -7,7 +7,9 @@
 
 # Guard against direct execution of this file
 if __name__ == "__main__":
-    raise TypeError("This module cannot be executed directly. It should be called by pip install.")
+    raise TypeError(
+        "This module cannot be executed directly. It should be called by pip install."
+    )
 
 
 # Import the hooks from scikit-build-core that will be called by pip
@@ -16,10 +18,13 @@ import subprocess
 
 
 # "Inject" the conan install before the build hooks are called.
-result = subprocess.run(["conan", "install", ".", "--build=missing"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+result = subprocess.run(
+    ["conan", "install", "src/my_lib", "--build=missing"],
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
+)
 if result.returncode == 0:
     print("Success!")
 else:
     print("Error:", result.stderr.decode())
     raise RuntimeError("Conan install failed. See error above.")
-

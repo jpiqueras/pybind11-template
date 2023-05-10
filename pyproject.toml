@@ -4,7 +4,7 @@ requires = ["scikit-build-core>=0.3.3", "pybind11", "cmake", "conan>=2.0"]
 # build-backend = "scikit_build_core.build"
 build-backend = "prepare-build-backend" # Custom wrapper around scikit_build_core.build See comments in prepare-build-backend.py.
 backend-path = [
-    ".",
+    "src/my_lib",
 ] #For in-tree builds, we need to add the directory to the path. See: https://peps.python.org/pep-0517/#in-tree-build-backends
 
 [project]
@@ -40,10 +40,10 @@ ninja.make-fallback = true
 # Extra args for CMake. Pip, unlike build, does not support lists, so semicolon
 # can be used to separate. Setting this in config or envvar will override the
 # entire list. See also cmake.define.
-cmake.args = ["--preset=conan-default"]
+cmake.args = ["--preset=conan-default", "-S src/my_lib"]
 
 # This activates verbose builds
-cmake.verbose = false
+cmake.verbose = true
 
 # This controls the CMake build type
 cmake.build-type = "Release"
@@ -62,7 +62,7 @@ sdist.reproducible = true
 
 # The root-level packages to include. Special default: if not given, the package
 # is auto-discovered if it's name matches the main name.
-wheel.packages = ["src/my_lib"]
+wheel.packages = ["src/my_lib", "src/py_lib"]
 
 # Setting py-api to "cp37" would build ABI3 wheels for Python 3.7+.  If CPython
 # is less than this value, or on PyPy, this will be ignored.  Setting the api to

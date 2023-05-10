@@ -24,3 +24,16 @@ pip install .
 
 5. Run the script in the test folder to check it works.
 
+
+
+## References
+
+1. https://drivendata.co/blog/python-packaging-2023
+
+2. https://github.com/scikit-build/scikit-build-core
+
+3. https://scikit-hep.org/developer
+
+4. https://iscinumpy.dev/post/scikit-build-proposal/
+
+5. https://github.com/scikit-hep/cookie
